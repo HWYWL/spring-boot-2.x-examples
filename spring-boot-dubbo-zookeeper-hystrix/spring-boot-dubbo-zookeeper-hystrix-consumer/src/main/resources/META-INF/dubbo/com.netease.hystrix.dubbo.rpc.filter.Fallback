@@ -1,0 +1,2 @@
+sayHello=com.yi.fallback.SayHelloFallback
+sayGoodbye=com.yi.fallback.SayGoodbyeFallback

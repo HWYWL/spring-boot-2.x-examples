@@ -1,0 +1,9 @@
+memcache:
+  servers: 192.168.99.100:11211
+  weights: 5
+  initConn: 20
+  minConn: 10
+  maxConn: 50
+  maintSleep: 3000
+  nagle: false
+  socketTO: 3000

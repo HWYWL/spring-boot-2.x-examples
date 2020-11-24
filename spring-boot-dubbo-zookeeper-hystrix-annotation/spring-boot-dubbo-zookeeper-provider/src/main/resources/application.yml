@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: linshen-dubbo-provider1
+server:
+  port: 9090
+dubbo:
+  registry:
+    protocol: zookeeper
+    address: 192.168.99.100:2181
+    id: lin-registry-1
+  protocol:
+    port: 12345
+    name: dubbo
+    id: dubbo
+    status: server
+  application:
+    name: linshen-dubbo-provider-name1
+    id: linshen-dubbo-provider-id1
+    qos-enable: true
+    qos-port: 22222
+  scan:
+    basePackages: com.yi.provider.service
+hello:
+  service:
+    version: 1.0.0

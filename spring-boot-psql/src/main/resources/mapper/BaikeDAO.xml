@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.psql.mapper.BaikeDAO">
+  <resultMap id="BaseResultMap" type="com.yi.psql.model.Baike">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="book" jdbcType="VARCHAR" property="book" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="good" jdbcType="INTEGER" property="good" />
+    <result column="bad" jdbcType="INTEGER" property="bad" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="gold_coin" jdbcType="INTEGER" property="goldCoin" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="crate_date" jdbcType="TIMESTAMP" property="crateDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, book, tag, good, bad, "name", gender, gold_coin, "status", crate_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from "baike"
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from "baike"
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yi.psql.model.Baike">
+    insert into "baike" (id, book, tag, 
+      good, bad, "name", gender, 
+      gold_coin, "status", crate_date, 
+      update_date)
+    values (#{id,jdbcType=INTEGER}, #{book,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, 
+      #{good,jdbcType=INTEGER}, #{bad,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{goldCoin,jdbcType=INTEGER}, #{status,jdbcType=SMALLINT}, #{crateDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yi.psql.model.Baike">
+    insert into "baike"
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="book != null">
+        book,
+      </if>
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="good != null">
+        good,
+      </if>
+      <if test="bad != null">
+        bad,
+      </if>
+      <if test="name != null">
+        "name",
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="goldCoin != null">
+        gold_coin,
+      </if>
+      <if test="status != null">
+        "status",
+      </if>
+      <if test="crateDate != null">
+        crate_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="book != null">
+        #{book,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="good != null">
+        #{good,jdbcType=INTEGER},
+      </if>
+      <if test="bad != null">
+        #{bad,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="goldCoin != null">
+        #{goldCoin,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="crateDate != null">
+        #{crateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yi.psql.model.Baike">
+    update "baike"
+    <set>
+      <if test="book != null">
+        book = #{book,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="good != null">
+        good = #{good,jdbcType=INTEGER},
+      </if>
+      <if test="bad != null">
+        bad = #{bad,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        "name" = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="goldCoin != null">
+        gold_coin = #{goldCoin,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        "status" = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="crateDate != null">
+        crate_date = #{crateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yi.psql.model.Baike">
+    update "baike"
+    set book = #{book,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      good = #{good,jdbcType=INTEGER},
+      bad = #{bad,jdbcType=INTEGER},
+      "name" = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      gold_coin = #{goldCoin,jdbcType=INTEGER},
+      "status" = #{status,jdbcType=SMALLINT},
+      crate_date = #{crateDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

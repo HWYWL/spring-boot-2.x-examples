@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.auto.code.dao.UserDao">
+
+	<resultMap id="BaseResultMap" type="com.yi.auto.code.bean.User">
+
+		<id column="id" jdbcType="INTEGER" property="id" />
+
+		<result column="name" jdbcType="VARCHAR" property="name" />
+
+		<result column="age" jdbcType="INTEGER" property="age" />
+
+		<result column="status" jdbcType="INTEGER" property="status" />
+
+		<result column="birthday" jdbcType="DATE" property="birthday" />
+
+		<result column="remarks" jdbcType="LONGVARCHAR" property="remarks" />
+
+		<result column="mun" jdbcType="DECIMAL" property="mun" />
+
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+
+	</resultMap>
+
+	<insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+		insert into test_user (
+		name,
+		age,
+		status,
+		birthday,
+		remarks,
+		mun,
+		update_time
+		)
+ 	   values (
+		 #{name,jdbcType=VARCHAR},
+		 #{age,jdbcType=INTEGER},
+		 #{status,jdbcType=INTEGER},
+		 #{birthday,jdbcType=DATE},
+		 #{remarks,jdbcType=LONGVARCHAR},
+		 #{mun,jdbcType=DECIMAL},
+		 #{updateTime,jdbcType=TIMESTAMP}
+		)
+
+
+	</insert>
+
+	<delete id="deleteByPrimaryKey" >
+		delete from  test_user 
+
+		where id = #{id} 
+ 
+
+	</delete>
+
+	<update id="update" >
+		update test_user
+		<set>
+			<if test="name!=null and name!=''">name = #{name,jdbcType=VARCHAR}, </if>
+			<if test="age!=null">age = #{age,jdbcType=INTEGER}, </if>
+			<if test="status!=null">status = #{status,jdbcType=INTEGER}, </if>
+			<if test="birthday!=null">birthday = #{birthday,jdbcType=DATE}, </if>
+			<if test="remarks!=null and remarks!=''">remarks = #{remarks,jdbcType=LONGVARCHAR}, </if>
+			<if test="mun!=null">mun = #{mun,jdbcType=DECIMAL}, </if>
+			<if test="createTime!=null">create_time = #{createTime,jdbcType=TIMESTAMP}, </if>
+			<if test="updateTime!=null">update_time = #{updateTime,jdbcType=TIMESTAMP}, </if>
+		</set>
+		where id=#{id}
+
+	</update>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+		select
+		id,
+		name,
+		age,
+		status,
+		birthday,
+		remarks,
+		mun,
+		create_time,
+		update_time
+		from test_user
+		where id = #{id,jdbcType=INTEGER}
+
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap" >
+		select
+		id,
+		name,
+		age,
+		status,
+		birthday,
+		remarks,
+		mun,
+		create_time,
+		update_time
+		from test_user
+		<where>
+		<if test="id!=null "> and test_user.id = #{id,jdbcType=INTEGER}</if>
+		<if test="name!=null and name!=''"> and test_user.name = #{name,jdbcType=VARCHAR}</if>
+		<if test="age!=null "> and test_user.age = #{age,jdbcType=INTEGER}</if>
+		<if test="status!=null "> and test_user.status = #{status,jdbcType=INTEGER}</if>
+		<if test="birthday!=null "> and test_user.birthday = #{birthday,jdbcType=DATE}</if>
+		<if test="remarks!=null and remarks!=''"> and test_user.remarks = #{remarks,jdbcType=LONGVARCHAR}</if>
+		<if test="mun!=null "> and test_user.mun = #{mun,jdbcType=DECIMAL}</if>
+		<if test="createTime!=null "> and test_user.create_time = #{createTime,jdbcType=TIMESTAMP}</if>
+		<if test=" startDate!=null and startDate!='' and endDate!=null and endDate!='' "> and test_user.create_time BETWEEN #{startDate} and #{endDate}</if>
+		<if test="updateTime!=null "> and test_user.update_time = #{updateTime,jdbcType=TIMESTAMP}</if>
+		</where>
+		<choose>
+          <when test="orderByString!=null and orderByString!=''">
+              ${orderByString}
+          </when>
+          <otherwise>
+              order by id desc
+          </otherwise>
+      </choose>
+
+	</select>
+
+	<select id="selectByCondition" resultMap="BaseResultMap" >
+		select
+		id,
+		name,
+		age,
+		status,
+		birthday,
+		remarks,
+		mun,
+		create_time,
+		update_time
+		from test_user
+		<where>
+		<if test="id!=null "> and test_user.id = #{id,jdbcType=INTEGER}</if>
+		<if test="name!=null and name!=''"> and test_user.name = #{name,jdbcType=VARCHAR}</if>
+		<if test="age!=null "> and test_user.age = #{age,jdbcType=INTEGER}</if>
+		<if test="status!=null "> and test_user.status = #{status,jdbcType=INTEGER}</if>
+		<if test="birthday!=null "> and test_user.birthday = #{birthday,jdbcType=DATE}</if>
+		<if test="remarks!=null and remarks!=''"> and test_user.remarks = #{remarks,jdbcType=LONGVARCHAR}</if>
+		<if test="mun!=null "> and test_user.mun = #{mun,jdbcType=DECIMAL}</if>
+		<if test="createTime!=null "> and test_user.create_time = #{createTime,jdbcType=TIMESTAMP}</if>
+		<if test=" startDate!=null and startDate!='' and endDate!=null and endDate!='' "> and test_user.create_time BETWEEN #{startDate} and #{endDate}</if>
+		<if test="updateTime!=null "> and test_user.update_time = #{updateTime,jdbcType=TIMESTAMP}</if>
+		</where>
+		<choose>
+          <when test="orderByString!=null and orderByString!=''">
+              ${orderByString}
+          </when>
+          <otherwise>
+              order by id desc
+          </otherwise>
+      </choose>
+
+	</select>
+
+
+
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.mybatis.plus.dao.BaikeMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+		`id`, `book`, `tag`, `good`, `bad`, `name`, `gender`, `goldCoin`, `status`, `crateDate`, `updateDate`
+	</sql>
+
+    <select id="selectListByWrapper" resultType="com.yi.mybatis.plus.model.Baike">
+        SELECT * FROM baike
+        <!-- 判断 wrapper 是否为空 emptyOfWhere -->
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+</mapper>

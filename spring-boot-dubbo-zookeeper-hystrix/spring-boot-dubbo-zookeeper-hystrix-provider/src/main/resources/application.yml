@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: dubbo-provider
+server:
+  port: 9090
+dubbo:
+  registry:
+    protocol: zookeeper
+    address: 134.175.35.133:2181
+    id: registry-1
+  protocol:
+    port: -1
+    name: dubbo
+    id: dubbo
+    status: server
+  application:
+    name: dubbo-provider-name
+    id: dubbo-provider-id
+    qos-enable: true
+    qos-port: 22222
+  scan:
+    # 暴露服务(实现类对应的包)
+    basePackages: com.yi.provider.service
+hello:
+  service:
+    version: 1.0.0

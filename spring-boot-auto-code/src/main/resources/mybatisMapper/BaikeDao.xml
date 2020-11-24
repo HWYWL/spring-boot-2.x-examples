@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.auto.code.dao.BaikeDao">
+
+	<resultMap id="BaseResultMap" type="com.yi.auto.code.bean.Baike">
+
+		<id column="id" jdbcType="BIGINT" property="id" />
+
+		<result column="book" jdbcType="VARCHAR" property="book" />
+
+		<result column="tag" jdbcType="VARCHAR" property="tag" />
+
+		<result column="good" jdbcType="INTEGER" property="good" />
+
+		<result column="bad" jdbcType="INTEGER" property="bad" />
+
+		<result column="name" jdbcType="VARCHAR" property="name" />
+
+		<result column="gender" jdbcType="VARCHAR" property="gender" />
+
+		<result column="goldCoin" jdbcType="INTEGER" property="goldCoin" />
+
+		<result column="status" jdbcType="TINYINT" property="status" />
+
+		<result column="crateDate" jdbcType="TIMESTAMP" property="crateDate" />
+
+		<result column="updateDate" jdbcType="TIMESTAMP" property="updateDate" />
+
+	</resultMap>
+
+	<insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+		insert into baike (
+		book,
+		tag,
+		good,
+		bad,
+		name,
+		gender,
+		goldCoin,
+		status
+		)
+ 	   values (
+		 #{book,jdbcType=VARCHAR},
+		 #{tag,jdbcType=VARCHAR},
+		 #{good,jdbcType=INTEGER},
+		 #{bad,jdbcType=INTEGER},
+		 #{name,jdbcType=VARCHAR},
+		 #{gender,jdbcType=VARCHAR},
+		 #{goldCoin,jdbcType=INTEGER},
+		 #{status,jdbcType=TINYINT}
+		)
+
+
+	</insert>
+
+	<delete id="deleteByPrimaryKey" >
+		delete from  baike 
+
+		where id = #{id} 
+ 
+
+	</delete>
+
+	<update id="update" >
+		update baike
+		<set>
+			<if test="book!=null and book!=''">book = #{book,jdbcType=VARCHAR}, </if>
+			<if test="tag!=null and tag!=''">tag = #{tag,jdbcType=VARCHAR}, </if>
+			<if test="good!=null">good = #{good,jdbcType=INTEGER}, </if>
+			<if test="bad!=null">bad = #{bad,jdbcType=INTEGER}, </if>
+			<if test="name!=null and name!=''">name = #{name,jdbcType=VARCHAR}, </if>
+			<if test="gender!=null and gender!=''">gender = #{gender,jdbcType=VARCHAR}, </if>
+			<if test="goldCoin!=null">goldCoin = #{goldCoin,jdbcType=INTEGER}, </if>
+			<if test="status!=null">status = #{status,jdbcType=TINYINT}, </if>
+			<if test="crateDate!=null">crateDate = #{crateDate,jdbcType=TIMESTAMP}, </if>
+			<if test="updateDate!=null">updateDate = #{updateDate,jdbcType=TIMESTAMP}, </if>
+		</set>
+		where id=#{id}
+
+	</update>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+		select
+		id,
+		book,
+		tag,
+		good,
+		bad,
+		name,
+		gender,
+		goldCoin,
+		status,
+		crateDate,
+		updateDate
+		from baike
+		where id = #{id,jdbcType=BIGINT}
+
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap" >
+		select
+		id,
+		book,
+		tag,
+		good,
+		bad,
+		name,
+		gender,
+		goldCoin,
+		status,
+		crateDate,
+		updateDate
+		from baike
+		<where>
+		<if test="id!=null "> and baike.id = #{id,jdbcType=BIGINT}</if>
+		<if test="book!=null and book!=''"> and baike.book = #{book,jdbcType=VARCHAR}</if>
+		<if test="tag!=null and tag!=''"> and baike.tag = #{tag,jdbcType=VARCHAR}</if>
+		<if test="good!=null "> and baike.good = #{good,jdbcType=INTEGER}</if>
+		<if test="bad!=null "> and baike.bad = #{bad,jdbcType=INTEGER}</if>
+		<if test="name!=null and name!=''"> and baike.name = #{name,jdbcType=VARCHAR}</if>
+		<if test="gender!=null and gender!=''"> and baike.gender = #{gender,jdbcType=VARCHAR}</if>
+		<if test="goldCoin!=null "> and baike.goldCoin = #{goldCoin,jdbcType=INTEGER}</if>
+		<if test="status!=null "> and baike.status = #{status,jdbcType=TINYINT}</if>
+		<if test="crateDate!=null "> and baike.crateDate = #{crateDate,jdbcType=TIMESTAMP}</if>
+		<if test="updateDate!=null "> and baike.updateDate = #{updateDate,jdbcType=TIMESTAMP}</if>
+		</where>
+		<choose>
+          <when test="orderByString!=null and orderByString!=''">
+              ${orderByString}
+          </when>
+          <otherwise>
+              order by id desc
+          </otherwise>
+      </choose>
+
+	</select>
+
+	<select id="selectByCondition" resultMap="BaseResultMap" >
+		select
+		id,
+		book,
+		tag,
+		good,
+		bad,
+		name,
+		gender,
+		goldCoin,
+		status,
+		crateDate,
+		updateDate
+		from baike
+		<where>
+		<if test="id!=null "> and baike.id = #{id,jdbcType=BIGINT}</if>
+		<if test="book!=null and book!=''"> and baike.book = #{book,jdbcType=VARCHAR}</if>
+		<if test="tag!=null and tag!=''"> and baike.tag = #{tag,jdbcType=VARCHAR}</if>
+		<if test="good!=null "> and baike.good = #{good,jdbcType=INTEGER}</if>
+		<if test="bad!=null "> and baike.bad = #{bad,jdbcType=INTEGER}</if>
+		<if test="name!=null and name!=''"> and baike.name = #{name,jdbcType=VARCHAR}</if>
+		<if test="gender!=null and gender!=''"> and baike.gender = #{gender,jdbcType=VARCHAR}</if>
+		<if test="goldCoin!=null "> and baike.goldCoin = #{goldCoin,jdbcType=INTEGER}</if>
+		<if test="status!=null "> and baike.status = #{status,jdbcType=TINYINT}</if>
+		<if test="crateDate!=null "> and baike.crateDate = #{crateDate,jdbcType=TIMESTAMP}</if>
+		<if test="updateDate!=null "> and baike.updateDate = #{updateDate,jdbcType=TIMESTAMP}</if>
+		</where>
+		<choose>
+          <when test="orderByString!=null and orderByString!=''">
+              ${orderByString}
+          </when>
+          <otherwise>
+              order by id desc
+          </otherwise>
+      </choose>
+
+	</select>
+
+</mapper>

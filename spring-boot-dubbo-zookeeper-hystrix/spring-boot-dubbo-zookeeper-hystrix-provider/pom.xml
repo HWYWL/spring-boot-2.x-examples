@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-boot-dubbo-zookeeper-hystrix</artifactId>
+        <groupId>com.yi</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-boot-dubbo-zookeeper-hystrix-provider</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--依赖公共接口-->
+        <dependency>
+            <groupId>com.yi</groupId>
+            <artifactId>spring-boot-dubbo-zookeeper-hystrix-base</artifactId>
+            <version>${spring-boot-dubbo-zookeeper-base.version}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,47 @@
+datasourceConfig:
+    #驱动名称
+    driverClassName: com.mysql.cj.jdbc.Driver
+    #数据库名称
+    name: auto-code
+    #jdbc链接
+    url: jdbc:mysql://127.0.0.1:3306/auto-code?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    #数据库用户名
+    username: root
+    #数据库密码
+    password: root
+globalConfig:
+    #生成代码的项目路径
+    parentPath: I:/gitCode/spring-boot-2.x-examples/spring-boot-auto-code
+    #生成代码的父包 如父包是com.yi.auto.code  controller将在com.yi.auto.code.controller下 bean 将在com.yi.auto.code.bean下 ,service,dao同理
+    parentPack: com.yi.auto.code
+    #是否覆盖生成文件 如果为true将会把以前的文件覆盖掉
+    cover: false
+    #xml存放的文件夹默认 mybatisMapper
+    xmlPath: mybatisMapper
+    # 表关系配置  一对一 一对多 多对多 代码生成 采用追加的方式
+    relationConfig:
+        #主表
+        primary:
+            #数据库表名
+            dataName: test_user
+            #别名: 如果不设置将采用驼峰命名法 test_user=TestUser
+            beanName: User
+            #主键名称
+            primaryKey: id
+            #备注
+            remark: "用户"
+        #外表
+        foreign:
+            #数据库表名
+            dataName: test_class
+            #别名: 如果不设置将采用驼峰命名法 test_user=TestUser
+            beanName: Clazz
+            #外键名称 就是已哪个字段和主表关联 填写数据库字段名
+            foreignKey: user_id
+            #是否生成单表代码
+            #            generate: true
+            #如果单表代码已经生成,请填写代码的父包,没有则不填写 如 com.yi.auto.code.bean.TestUser  请填写 com.yi.auto.code
+            #            existParentPackage: com.yi.auto.code
+            #备注
+            remark: "班级"
+

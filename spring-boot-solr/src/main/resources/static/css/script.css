@@ -1,0 +1,13 @@
+.container {
+    margin-top: 40px;
+}
+
+.leftright {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.center-button {
+    margin-left: 40%;
+    margin-right: 30%;
+}

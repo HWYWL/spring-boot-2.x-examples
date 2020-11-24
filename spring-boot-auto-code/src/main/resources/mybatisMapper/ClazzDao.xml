@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.auto.code.dao.ClazzDao">
+
+	<resultMap id="BaseResultMap" type="com.yi.auto.code.bean.Clazz">
+
+		<id column="id" jdbcType="INTEGER" property="id" />
+
+		<result column="user_id" jdbcType="INTEGER" property="userId" />
+
+		<result column="class_name" jdbcType="VARCHAR" property="className" />
+
+		<result column="quantity" jdbcType="INTEGER" property="quantity" />
+
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+
+	</resultMap>
+
+	<insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+		insert into test_class (
+		user_id,
+		class_name,
+		quantity
+		)
+ 	   values (
+		 #{userId,jdbcType=INTEGER},
+		 #{className,jdbcType=VARCHAR},
+		 #{quantity,jdbcType=INTEGER}
+		)
+
+
+	</insert>
+
+	<delete id="deleteByPrimaryKey" >
+		delete from  test_class 
+
+		where id = #{id} 
+ 
+
+	</delete>
+
+	<update id="update" >
+		update test_class
+		<set>
+			<if test="userId!=null">user_id = #{userId,jdbcType=INTEGER}, </if>
+			<if test="className!=null and className!=''">class_name = #{className,jdbcType=VARCHAR}, </if>
+			<if test="quantity!=null">quantity = #{quantity,jdbcType=INTEGER}, </if>
+			<if test="createTime!=null">create_time = #{createTime,jdbcType=TIMESTAMP}, </if>
+		</set>
+		where id=#{id}
+
+	</update>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+		select
+		id,
+		user_id,
+		class_name,
+		quantity,
+		create_time
+		from test_class
+		where id = #{id,jdbcType=INTEGER}
+
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap" >
+		select
+		id,
+		user_id,
+		class_name,
+		quantity,
+		create_time
+		from test_class
+		<where>
+		<if test="id!=null "> and test_class.id = #{id,jdbcType=INTEGER}</if>
+		<if test="userId!=null "> and test_class.user_id = #{userId,jdbcType=INTEGER}</if>
+		<if test="className!=null and className!=''"> and test_class.class_name = #{className,jdbcType=VARCHAR}</if>
+		<if test="quantity!=null "> and test_class.quantity = #{quantity,jdbcType=INTEGER}</if>
+		<if test="createTime!=null "> and test_class.create_time = #{createTime,jdbcType=TIMESTAMP}</if>
+		<if test=" startDate!=null and startDate!='' and endDate!=null and endDate!='' "> and test_class.create_time BETWEEN #{startDate} and #{endDate}</if>
+		</where>
+		<choose>
+          <when test="orderByString!=null and orderByString!=''">
+              ${orderByString}
+          </when>
+          <otherwise>
+              order by id desc
+          </otherwise>
+      </choose>
+
+	</select>
+
+	<select id="selectByCondition" resultMap="BaseResultMap" >
+		select
+		id,
+		user_id,
+		class_name,
+		quantity,
+		create_time
+		from test_class
+		<where>
+		<if test="id!=null "> and test_class.id = #{id,jdbcType=INTEGER}</if>
+		<if test="userId!=null "> and test_class.user_id = #{userId,jdbcType=INTEGER}</if>
+		<if test="className!=null and className!=''"> and test_class.class_name = #{className,jdbcType=VARCHAR}</if>
+		<if test="quantity!=null "> and test_class.quantity = #{quantity,jdbcType=INTEGER}</if>
+		<if test="createTime!=null "> and test_class.create_time = #{createTime,jdbcType=TIMESTAMP}</if>
+		<if test=" startDate!=null and startDate!='' and endDate!=null and endDate!='' "> and test_class.create_time BETWEEN #{startDate} and #{endDate}</if>
+		</where>
+		<choose>
+          <when test="orderByString!=null and orderByString!=''">
+              ${orderByString}
+          </when>
+          <otherwise>
+              order by id desc
+          </otherwise>
+      </choose>
+
+	</select>
+
+	<delete id="deleteClazzByUser" >
+		delete from  test_class
+		where user_id=#{userId}
+	</delete>
+
+
+
+
+</mapper>

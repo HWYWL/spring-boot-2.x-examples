@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.yi.auto.code.ui.config.AutoCodeConfiguration,com.yi.auto.code.ui.config.Swagger2Configuration

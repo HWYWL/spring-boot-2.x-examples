@@ -1,0 +1,8 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.sql.interceptor.dao.BaikeMapper">
+    <select id="selectByBookName" resultType="com.yi.sql.interceptor.model.Baike">
+        select * from baike where book = #{book}
+    </select>
+</mapper>

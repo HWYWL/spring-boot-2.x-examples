@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: linshen-dubbo-consumer1
+server:
+  port: 9091
+hello:
+  service:
+    version: 1.0.0
+dubbo:
+  application:
+    id: linshen-dubbo-consumer-id1
+    name: linshen-dubbo-consumer-name1
+  registry:
+    protocol: zookeeper
+    address: 192.168.99.100:2181
+    id: lin-registry-1
+management:
+  endpoint:
+    dubbo-configs:
+      enabled: true
+    dubbo:
+      enabled: true
+    dubbo-services:
+      enabled: true
+    dubbo-properties:
+      enabled: true
+    dubbo-shutdown:
+      enabled: true
+    dubbo-references:
+      enabled: true
+  health:
+    dubbo:
+      status:
+        defaults: memory
+        extras: load,threadpool
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+hystrix:
+  streamEnabled:
+    true
+  enabled:
+    false

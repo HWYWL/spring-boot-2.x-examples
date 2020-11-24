@@ -1,0 +1,29 @@
+datasourceConfig:
+    #驱动名称
+    driverClassName: com.mysql.cj.jdbc.Driver
+    #数据库名称
+    name: auto-code
+    #jdbc链接
+    url: jdbc:mysql://127.0.0.1:3306/auto-code?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    #数据库用户名
+    username: root
+    #数据库密码
+    password: root
+globalConfig:
+    #数据库表配置
+    tableNames:
+    #表名称
+    - dataName: baike
+        #别名 不写默认采用驼峰命名法 test_code->TestCode
+        #          aliasName: SysLoginLog
+        #如果用多张表,请按照如下写法,继续往下写.
+    #        - dataName: test_code2
+    #          aliasName: DDDDDDD
+    #生成代码的项目路径
+    parentPath: I:/gitCode/spring-boot-2.x-examples/spring-boot-auto-code
+    #生成代码的父包 如父包是com.yi.auto.code  controller将在com.yi.auto.code.controller下 bean 将在com.yi.auto.code.bean下 ,service,dao同理
+    parentPack: com.yi.auto.code
+    #是否覆盖生成文件 如果为true将会把以前的文件覆盖掉
+    cover: false
+    #xml存放的文件夹默认 mybatisMapper
+    xmlPath: mybatisMapper
