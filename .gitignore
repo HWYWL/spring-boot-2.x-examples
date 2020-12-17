@@ -253,3 +253,8 @@ spring-boot-ali-loghub/mvnw
 spring-boot-ali-loghub/mvnw.cmd
 spring-boot-ali-loghub/.mvn/
 spring-boot-mybatis-hikari/.mvn/
+spring-boot-erupt/.gitignore
+spring-boot-erupt/mvnw
+spring-boot-erupt/mvnw.cmd
+spring-boot-erupt/.mvn/
+spring-boot-erupt/.erupt/upms.loaded
