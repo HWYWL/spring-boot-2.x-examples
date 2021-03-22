@@ -258,3 +258,7 @@ spring-boot-erupt/mvnw
 spring-boot-erupt/mvnw.cmd
 spring-boot-erupt/.mvn/
 spring-boot-erupt/.erupt/upms.loaded
+spring-boot-sa-token/.mvn/
+spring-boot-sa-token/.gitignore
+spring-boot-sa-token/mvnw
+spring-boot-sa-token/mvnw.cmd
