@@ -262,3 +262,11 @@ spring-boot-sa-token/.mvn/
 spring-boot-sa-token/.gitignore
 spring-boot-sa-token/mvnw
 spring-boot-sa-token/mvnw.cmd
+spring-boot-clickhouse/.gitignore
+spring-boot-clickhouse/mvnw
+spring-boot-clickhouse/mvnw.cmd
+spring-boot-clickhouse/.mvn/
+spring-boot-security-plus/.gitignore
+spring-boot-security-plus/mvnw
+spring-boot-security-plus/mvnw.cmd
+spring-boot-security-plus/.mvn/

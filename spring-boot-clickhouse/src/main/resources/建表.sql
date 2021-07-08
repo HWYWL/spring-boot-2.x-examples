@@ -1,0 +1,40 @@
+CREATE TABLE IF NOT EXISTS event_log_realtime
+(
+    app_id                            UInt16,
+    platform_id                       UInt16,
+    channel_id                        UInt16,
+    event_id                          UInt16,
+    open_id                           String,
+    add_time                          UInt32,
+    pay_time                          UInt32,
+    event_time_server                 UInt32,
+    event_time_client                 UInt32,
+    os                                UInt8,
+    real_currency_amount              UInt32,
+    order_id                          String,
+    cp_order_id                       String,
+    platform_order_id                 String,
+    goods_name                        String,
+    real_currency_type                String,
+    payment_type                      String,
+    os_version                        String,
+    device_id                         String,
+    register_device_id                String,
+    register_channel_id               String,
+    role_id                           String,
+    register_time                     UInt32,
+    register_date                     DateTime,
+    role_create_time                  UInt32,
+    role_create_date                  DateTime,
+    app_register_time                 UInt32,
+    app_register_date                 DateTime,
+    device_app_register_time          UInt32,
+    device_app_register_date          DateTime,
+    register_device_app_register_time UInt32,
+    register_device_app_register_date DateTime,
+    dt_rs                             DateTime,
+    dt_time_rs                        String
+) ENGINE = MergeTree()
+    ORDER BY (event_id, dt_rs, dt_time_rs, app_id, platform_id, channel_id)
+    PARTITION BY (dt_rs, dt_time_rs)
+    TTL dt_rs + INTERVAL 4 DAY;

@@ -1,0 +1,14 @@
+server:
+  port: 7781
+
+spring:
+  datasource:
+    driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+    url: jdbc:clickhouse://127.0.0.1:8123/yi
+    username: default
+    password:
+
+#mybatis-plus配置控制台打印完整带参数SQL语句
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
